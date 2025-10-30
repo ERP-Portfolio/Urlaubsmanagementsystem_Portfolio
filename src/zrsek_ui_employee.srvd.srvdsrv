@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition Employee'
+define service ZRSEK_UI_EMPLOYEE {
+  expose ZRSEK_C_Employee as Employee;
+}

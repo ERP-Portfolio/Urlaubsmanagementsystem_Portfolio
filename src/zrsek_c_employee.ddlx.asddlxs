@@ -1,0 +1,50 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo: {
+  typeNamePlural: 'Mitarbeiter',
+  typeName: 'Mitarbeiter',
+  title.value: 'EmployeeNo',
+  description.value: 'LastName'
+}
+annotate view ZRSEK_C_Employee with
+{
+
+  /* Facets */
+  @UI.facet: [
+    { position: 10, targetQualifier: 'EmployeeDetails', label: 'Mitarbeiterdetails', type: #FIELDGROUP_REFERENCE },
+    { position: 20, targetQualifier: 'AdminData',       label: 'Administrative Daten', type: #FIELDGROUP_REFERENCE }
+  ]
+
+  /* Fields */
+  @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
+  EmployeeUuid;
+
+  @UI.lineItem: [{ position: 10 }]
+  @UI.selectionField: [{ position: 10 }]
+  @UI.fieldGroup: [{ position: 10, qualifier: 'EmployeeDetails' }]
+  EmployeeNo;
+
+  @UI.lineItem: [{ position: 20 }]
+  @UI.fieldGroup: [{ position: 20, qualifier: 'EmployeeDetails' }]
+  FirstName;
+
+  @UI.lineItem: [{ position: 30 }]
+  @UI.fieldGroup: [{ position: 30, qualifier: 'EmployeeDetails' }]
+  LastName;
+
+  @UI.lineItem: [{ position: 40 }]
+  @UI.selectionField: [{ position: 20 }]
+  @UI.fieldGroup: [{ position: 40, qualifier: 'EmployeeDetails' }]
+  EntryDate;
+
+  @UI.fieldGroup: [{ position: 20, qualifier: 'AdminData' }]
+  CreatedBy;
+
+  @UI.fieldGroup: [{ position: 30, qualifier: 'AdminData' }]
+  CreatedAt;
+
+  @UI.fieldGroup: [{ position: 40, qualifier: 'AdminData' }]
+  LastChangedBy;
+
+  @UI.fieldGroup: [{ position: 50, qualifier: 'AdminData' }]
+  LastChangedAt;
+}
