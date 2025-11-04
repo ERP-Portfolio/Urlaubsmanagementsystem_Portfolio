@@ -1,4 +1,6 @@
-@EndUserText.label: 'Service Definition Employee'
+@EndUserText.label: 'Employee UI Service'
 define service ZRSEK_UI_EMPLOYEE {
   expose ZRSEK_C_Employee as Employee;
+  expose ZRSEK_C_VacReq   as Entitlements;
+  expose ZRSEK_C_VacEnt   as Requests;
 }
