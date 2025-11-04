@@ -1,0 +1,28 @@
+projection;
+strict ( 2 );
+
+define behavior for ZRSEK_C_Employee alias Employee
+{
+ use create;
+  use update;
+  use delete;
+
+  use association _Requests     { create; }
+  use association _Entitlements { create; }
+}
+
+define behavior for ZRSEK_C_VacEnt alias VacReq
+{
+  use update;
+  use delete;
+
+  use association _Employee;
+}
+
+define behavior for ZRSEK_C_VacReq alias VacEnt
+{
+  use update;
+  use delete;
+
+  use association _Employee;
+}

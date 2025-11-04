@@ -6,20 +6,9 @@ define view entity ZRSEK_C_VacReq
 {
   key RequestUuid,
       EmployeeUuid,
-      RequestId,
-      ApproverId,
-      StartDate,
-      EndDate,
-      DaysRequested,
-      Status,
-      Comments,
+      RequestId, ApproverId, StartDate, EndDate, DaysRequested, Status, Comments,
+      CreatedBy, CreatedAt, LastChangedBy, LastChangedAt,
 
-  /* Admin */
-      CreatedBy,
-      CreatedAt,
-      LastChangedBy,
-      LastChangedAt,
-
-  /* Associations */
-      _Employee : redirected to parent ZRSEK_C_Employee
+  _Employee : redirected to parent ZRSEK_C_Employee
 }
+

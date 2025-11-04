@@ -41,7 +41,7 @@ CLASS zrsek_cl_employee_generator IMPLEMENTATION.
     uuid_raphael                  = cl_system_uuid=>create_uuid_x16_static( ).
     ls_employee-id_uuid           = uuid_raphael.
     ls_employee-mitarbeiternummer = 1.
-    ls_employee-vorname           = 'Raphael'.
+    ls_employee-vorname          = 'Raphael'.
     ls_employee-nachname          = 'Falk'.
     ls_employee-eintrittsdatum    = '19990701'.
     ls_employee-created_by        = 'GENERATOR'.
@@ -57,7 +57,7 @@ CLASS zrsek_cl_employee_generator IMPLEMENTATION.
     ls_employee-id_uuid           = uuid_simon.
     ls_employee-mitarbeiternummer = 2.
     ls_employee-vorname           = 'Simon'.
-    ls_employee-nachname          = 'Gerthoder'.
+    ls_employee-nachname          = 'Gerthofer'.
     ls_employee-eintrittsdatum    = '20240101'.
     ls_employee-created_by        = 'GENERATOR'.
     GET TIME STAMP FIELD ls_employee-created_at.

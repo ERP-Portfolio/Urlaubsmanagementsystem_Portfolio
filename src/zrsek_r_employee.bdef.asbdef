@@ -1,0 +1,90 @@
+managed implementation in class zrsek_bp_employee unique;
+strict ( 2 );
+
+define behavior for ZRSEK_R_Employee alias Employee
+persistent table zrsek_employee_a
+lock master
+authorization master ( instance )
+{
+  create;
+  update;
+  delete;
+
+  field ( readonly, numbering : managed ) EmployeeUuid;
+
+  association _Entitlements { create; }
+  association _Requests     { create; }
+
+  mapping for zrsek_employee_a
+  {
+   EmployeeUuid  = id_uuid;
+   EmployeeNo    = mitarbeiternummer;
+   FirstName     = vorname;
+   LastName      = nachname;
+   EntryDate     = eintrittsdatum;
+   CreatedAt     = created_at;
+   CreatedBy     = created_by;
+   LastChangedAt = last_changed_at;
+   LastChangedBy = last_changed_by;
+  }
+
+}
+
+define behavior for ZRSEK_R_VacEnt // Urlaubsanspruch
+persistent table zrsek_vacent_a
+lock dependent by _Employee
+authorization dependent by _Employee
+//etag master <field_name>
+{
+  update;
+  delete;
+
+  field ( readonly, numbering : managed ) EntitlementUuid;
+  field ( readonly ) EmployeeUuid;
+
+  association _Employee;
+
+  mapping for zrsek_vacent_a corresponding
+  {
+   EntitlementUuid = entitlement_uuid;
+   EmployeeUuid    = employee_uuid;
+   Jahr            = jahr;
+   DaysTotal       = days_total;
+   CreatedAt       = created_at;
+   CreatedBy       = created_by;
+   LastChangedAt   = last_changed_at;
+   LastChangedBy   = last_changed_by;
+  }
+}
+
+define behavior for ZRSEK_R_VacReq // Urlaubsantrag
+persistent table zrsek_vacreq_a
+lock dependent by _Employee
+authorization dependent by _Employee
+//etag master <field_name>
+{
+  update;
+  delete;
+
+  field ( readonly, numbering : managed ) RequestUuid;
+  field ( readonly ) EmployeeUuid;
+  field ( readonly ) ApproverId;
+
+  association _Employee;
+
+  mapping for zrsek_vacreq_a corresponding
+  {
+   RequestUuid    = request_uuid;
+   EmployeeUuid   = employee_uuid;
+   ApproverId     = approver_id;
+   StartDate      = start_date;
+   EndDate        = end_date;
+   DaysRequested  = days_requested;
+   Comments       = comments;
+   Status         = status;
+   CreatedAt      = created_at;
+   CreatedBy      = created_by;
+   LastChangedAt  = last_changed_at;
+   LastChangedBy  = last_changed_by;
+  }
+}

@@ -6,16 +6,8 @@ define view entity ZRSEK_C_VacEnt
 {
   key EntitlementUuid,
       EmployeeUuid,
-      Jahr,
-      DaysTotal,
-      DaysCarryOver,
+      Jahr, DaysTotal, DaysCarryOver,
+      CreatedBy, CreatedAt, LastChangedBy, LastChangedAt,
 
-  /* Admin */
-      CreatedBy,
-      CreatedAt,
-      LastChangedBy,
-      LastChangedAt,
-
-  /* Redirect zum Parent */
-      _Employee : redirected to parent ZRSEK_C_Employee
+  _Employee : redirected to parent ZRSEK_C_Employee
 }
